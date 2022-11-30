@@ -1781,3 +1781,432 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.6ms | Allocations: 4699)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20221130071237)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221130071237"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/sign_up" for ::1 at 2022-11-30 12:43:17 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 2.1ms | Allocations: 203)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 531)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 19.4ms | Allocations: 7142)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 36.8ms | ActiveRecord: 0.5ms | Allocations: 27429)
+
+
+Started POST "/users" for ::1 at 2022-11-30 12:43:36 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"DvrMIrw1hULsmBFFbFVfDZ/0alFPHWnxPVEF6Kt2lHRo8e/N6NwFZWae5JKfrIna1jtX/ChQ2Bvx7hyG+wHG4Q==", "user"=>{"email"=>"mohit@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mohit@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "mohit@gmail.com"], ["encrypted_password", "$2a$12$AR.UZCDTjP6ywtYeBAKHA.u4Tk7Azc1XUybFxL.UChmQOrvmE6RlK"], ["created_at", "2022-11-30 07:13:36.578802"], ["updated_at", "2022-11-30 07:13:36.578802"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 402ms (ActiveRecord: 4.3ms | Allocations: 13403)
+
+
+Started GET "/" for ::1 at 2022-11-30 12:43:36 +0530
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 5261)
+
+
+Started GET "/" for ::1 at 2022-11-30 12:47:54 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 10.4ms | ActiveRecord: 0.6ms | Allocations: 14023)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:47:56 +0530
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (Duration: 36.2ms | Allocations: 4723)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 41.6ms | ActiveRecord: 3.3ms | Allocations: 11819)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-11-30 12:47:58 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ltt9MCrSn8o0aX57z1AdZCheJcowu6YOQEg23xUpc07w0F7ffjsf7b5vi6w8qcuzYZEYZ1f2F+SM9y+xRV4h2w=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 0.3ms | Allocations: 3054)
+
+
+Started GET "/" for ::1 at 2022-11-30 12:47:58 +0530
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 376)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:47:58 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 617)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2911)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.0ms | Allocations: 8194)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:48:00 +0530
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 373)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:00 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.0ms | Allocations: 5481)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:48:00 +0530
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 363)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:00 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1337)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 5504)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:48:00 +0530
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 373)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:01 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 5490)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:48:01 +0530
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 379)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:01 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 5490)
+
+
+Started GET "/articles" for ::1 at 2022-11-30 12:48:01 +0530
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 357)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:01 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.0ms | Allocations: 5478)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:48:06 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 5454)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:06 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2254)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 8085)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:07 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1342)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 5471)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms | Allocations: 5471)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 5447)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 5456)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 5454)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 5460)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 5462)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 5462)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 5450)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.0ms | Allocations: 5450)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:10 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 5466)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:10 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 5466)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:55:38 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 8.0ms | Allocations: 2254)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.0ms | Allocations: 8083)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:58:14 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.0ms | Allocations: 8064)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:58:29 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 8080)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:58:39 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 8094)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:58:41 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1342)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 5467)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-11-30 12:58:42 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 193)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2067)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.0ms | Allocations: 6921)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:58:44 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1345)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 5481)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:03 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2254)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 8109)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:04 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1342)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms | Allocations: 5471)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:14 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 8088)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:15 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1342)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 5461)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:15 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 5460)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:15 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 5448)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 12:59:54 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 536)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 8064)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-11-30 13:00:08 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 193)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 89)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2052)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 6852)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-11-30 13:00:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 152)
+  Rendered /home/mohitsharma/.rvm/gems/ruby-2.6.5/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1345)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.0ms | Allocations: 5473)
+
+
